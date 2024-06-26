@@ -39,7 +39,7 @@ class ChristianLyrics {
 
   Widget getLyric(BuildContext context, {bool isPlaying = false}) {
 
-    TextStyle style = Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5, fontSize: 20, color: Colors.white);
+    TextStyle style = Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5, fontSize: 20, color: Colors.white,fontWeight: FontWeight.w500);
 
     if (this.playingLyric!.hasLyric) {
       return LayoutBuilder(builder: (context, constraints) {
