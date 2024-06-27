@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'dart:ui' as ui;
 import 'lyric.dart';
 
 class ChristianLyrics {
-
   StreamController<int> positionWithOffsetController = StreamController<int>.broadcast();
   int lastPositionUpdateTime = 0;
   int positionWithOffset = 0;
@@ -32,14 +30,13 @@ class ChristianLyrics {
     this.playingLyric!.setLyric(lyric: lyricContent);
   }
 
-  void setPositionWithOffset({int position=0, int duration=1}) {
+  void setPositionWithOffset({int position = 0, int duration = 1}) {
     positionWithOffset = position;
     positionWithOffsetController.add(positionWithOffset);
   }
 
   Widget getLyric(BuildContext context, {bool isPlaying = false}) {
-
-    TextStyle style = Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5, fontSize: 20, color: Colors.white,fontWeight: FontWeight.w500);
+    TextStyle style = Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5, fontSize: 20, color: Colors.white);
 
     if (this.playingLyric!.hasLyric) {
       return LayoutBuilder(builder: (context, constraints) {
@@ -92,22 +89,17 @@ class ChristianLyrics {
                 lyricLineStyle: normalStyle,
                 highlight: style.color!,
                 streamPosition: positionWithOffsetController,
-                onTap: () {
-                },
+                onTap: () {},
                 size: Size(constraints.maxWidth, constraints.maxHeight == double.infinity ? 0 : constraints.maxHeight),
                 playing: isPlaying,
-              )
-          ),
+              )),
         );
       });
     } else {
-      return Container(
-        child: Center(
-          child: Text(playingLyric!.message, style: style),
-        ),
+      return Center(
+        child: Text(playingLyric!.message,
+            style: const TextStyle(height: 1.5, fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500)),
       );
     }
-
   }
-
 }
